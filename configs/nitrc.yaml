@@ -1,0 +1,24 @@
+paths:
+  data_root: data/NITRC
+  output_root: output/nitrc
+  concentrations_dir: MATLAB_Concentrations
+  classification_dir: MATLAB_Classification
+evaluation:
+  training_modes:
+  - previous_blocks_and_sessions
+  filter_mode: causal
+  epoch_sec: 1.0
+  step_sec: 0.25
+  label_rule: strict
+  covariance_reg: 0.0
+  verbose: true
+regularization:
+- name: none
+  covariance_shrinkage: none
+  shrinkage_alpha: 0.0
+- name: diagonal_0.010
+  covariance_shrinkage: diagonal
+  shrinkage_alpha: 0.01
+plot_configs:
+- none
+- diagonal_0.010

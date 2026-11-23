@@ -1,0 +1,186 @@
+paths:
+  data_root: data/NIRS_BCI
+  output_root: output/nirs_bci
+experiments:
+  channel_selection:
+    enabled: false
+filters:
+  filters_active:
+  - raw
+  - sma
+  - highpass_0002
+  filters_rest_active:
+  - raw
+  - sma
+  - highpass_0002
+  - highpass_0018
+  filters_psd:
+  - raw
+  - sma
+  - highpass_0002
+  - highpass_0018
+  filter_labels:
+    raw: исходный
+    sma: скользящее среднее
+    highpass_0002: ФВЧ 0.002 Гц
+    highpass_0018: ФВЧ 0.018 Гц
+previous_sessions:
+  FEATURE_SET:
+    LDA: null
+    SVM_linear_mean:
+    - mean
+    SVM_linear_mean_std:
+    - mean
+    - std
+    SVM_rbf_mean:
+    - mean
+    SVM_rbf_mean_std:
+    - mean
+    - std
+    CatBoost_mean:
+    - mean
+    CatBoost_mean_std:
+    - mean
+    - std
+    CatBoost_basic:
+    - mean
+    - std
+    - slope
+    - amplitude
+  CLASSIFIERS:
+  - LDA
+  - SVM_linear_mean
+  - SVM_linear_mean_std
+  - SVM_rbf_mean
+  - SVM_rbf_mean_std
+  - CatBoost_mean
+  - CatBoost_mean_std
+  TASK_FILTERS:
+    left_vs_right:
+    - sma
+    - highpass_0002
+    rest_vs_active:
+    - sma
+    - highpass_0002
+    - highpass_0018
+  SEED: 42
+  WINDOW_SEC: 1.0
+  N_PERMUTATIONS: 3
+catboost_5s:
+  FEATURE_SET_CATBOOST_5S:
+    CatBoost_mean:
+    - mean
+    CatBoost_all:
+    - mean
+    - std
+    - slope
+    - amplitude
+  CLASSIFIERS_CATBOOST_5S:
+  - CatBoost_mean
+  - CatBoost_all
+  TASK_FILTERS_CATBOOST_5S:
+    left_vs_right:
+    - sma
+    rest_vs_active:
+    - sma
+  FILTERS_CATBOOST_5S:
+  - sma
+  SEED: 42
+  WINDOW_SEC: 5.0
+  N_PERMUTATIONS: 3
+catboost_5s_filters:
+  FILTERS_CATBOOST_5S:
+  - sma
+channels:
+  channels_diss_1based:
+  - 4
+  - 5
+  - 6
+  - 21
+  - 22
+  - 25
+  - 27
+components_5s:
+  FEATURE_SET_DISS_COMPONENTS:
+    CatBoost_mean:
+    - mean
+    CatBoost_all:
+    - mean
+    - std
+    - slope
+    - amplitude
+  CLASSIFIERS_DISS_COMPONENTS:
+  - CatBoost_mean
+  - CatBoost_all
+  TASKS_DISS_COMPONENTS:
+  - left_vs_right
+  - rest_vs_active
+  SEED: 42
+  WINDOW_SEC: 5.0
+  N_PERMUTATIONS: 3
+components_1s:
+  FEATURE_SET_DISS_COMPONENTS:
+    CatBoost_mean:
+    - mean
+    CatBoost_all:
+    - mean
+    - std
+    - slope
+    - amplitude
+  CLASSIFIERS_DISS_COMPONENTS:
+  - CatBoost_mean
+  - CatBoost_all
+  TASKS_DISS_COMPONENTS:
+  - left_vs_right
+  - rest_vs_active
+  SEED: 42
+  WINDOW_SEC: 1.0
+  N_PERMUTATIONS: 3
+lda_components:
+  FEATURE_SET_LDA_DISS_COMPONENTS:
+    LDA: null
+  CLASSIFIERS_LDA_DISS_COMPONENTS:
+  - LDA
+  TASKS_LDA_DISS_COMPONENTS:
+  - left_vs_right
+  - rest_vs_active
+  SEED: 42
+  WINDOW_SEC: 1.0
+  N_PERMUTATIONS: 3
+regularized_models:
+  FEATURE_SET_LDA_CATBOOST_REG:
+    LDA: null
+    CatBoost_mean:
+    - mean
+    CatBoostConservative_mean:
+    - mean
+    CatBoostTiny_mean:
+    - mean
+  CLASSIFIERS_LDA_CATBOOST_REG:
+  - LDA
+  - CatBoost_mean
+  - CatBoostConservative_mean
+  - CatBoostTiny_mean
+  TASKS_LDA_CATBOOST_REG:
+  - left_vs_right
+  - rest_vs_active
+  SEED: 42
+  WINDOW_SEC: 1.0
+  N_PERMUTATIONS: 3
+psd:
+  max_freq: 0.1
+component_filters:
+- sma
+channel_selection:
+  selection_methods:
+  - all_channels
+  - best_single
+  - greedy_from_single
+  - best_pair
+  - greedy_from_pair
+  method_labels:
+    all_channels: все каналы
+    best_single: лучший одиночный канал
+    greedy_from_single: жадный от одного канала
+    best_pair: лучшая пара каналов
+    greedy_from_pair: жадный от лучшей пары

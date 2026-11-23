@@ -1,0 +1,58 @@
+# Datasets
+/data/**
+!/data/NIRS_BCI/
+!/data/NIRS_BCI/.gitkeep
+!/data/NITRC/
+!/data/NITRC/.gitkeep
+
+*.mat
+*.h5
+*.hdf5
+*.snirf
+
+# Generated results
+/output/**
+!/output/.gitkeep
+/results/
+/outputs/
+/runs/
+catboost_info/
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+*.egg-info/
+build/
+dist/
+.coverage
+htmlcov/
+
+# Local and archived files
+/archive/
+/docs/
+/input/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# IDE and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.tmp
+*.temp
+*.log
+/repository_dump.txt

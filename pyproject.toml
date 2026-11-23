@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nirs-bci-classification"
+version = "0.1.0"
+description = "Local environment for the original NIRS coursework experiments"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "numpy>=1.26,<2",
+    "pandas>=2.1,<3",
+    "scipy>=1.11,<2",
+    "h5py>=3.10,<4",
+    "scikit-learn>=1.3,<2",
+    "matplotlib>=3.8,<4",
+    "catboost>=1.2,<2",
+    "tqdm>=4.66,<5",
+    "pyyaml>=6,<7",
+]
+
+[project.optional-dependencies]
+notebook = [
+    "jupyterlab>=4,<5",
+    "ipykernel>=6,<7",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nirs_bci*"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]
